@@ -178,11 +178,11 @@ public class CreateUserTests extends TestBase {
                 .userPassword(userPassword)
                 .build();
 
-        wireMockManager.user().stubCreateUserInvalidUsername(userRequest);
+        wireMockManager.user().stubCreateUserInvalidEmail(userRequest);
 
         apiClient.createUser(userRequest)
                 .expectStatus(400)
-                .expectErrorMessage("error", equalTo(INVALID_USERNAME_FORMAT));
+                .expectErrorMessage("error", equalTo(INVALID_EMAIL_FORMAT));
 
     }
 }
